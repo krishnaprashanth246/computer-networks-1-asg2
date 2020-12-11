@@ -13,11 +13,14 @@ print ("Socket successfully created")
 #print ("socket binded to {}".format(PORT))
 
 ip = sys.argv[1]
+_, _, hostinfo = socket.getaddrinfo(ip,9999)
 
+print(hostinfo)
+_,_,_,_,(hostid, hostport) = hostinfo
 
 
 # while True:
-oursocket.connect((ip, 9999))  
+oursocket.connect((hostid, hostport))  
 systime = "client's systime "
 currtime = datetime.now()
 dt_string = currtime.strftime("%d/%m/%Y %H:%M:%S")
