@@ -4,13 +4,8 @@ from datetime import datetime
 
 # Creating server socket
 c_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#s_host   = socket.gethostname()
-#ip       = socket.gethostbyname(s_host)
 s_PORT   = 9999
 
-#print("Your IP :",ip)
-#s_host = input('Enter friend\'s IP address:')
-#name = input('Enter Friend\'s name:')
 if(len(sys.argv) != 2):
 	print("format: <filename> <server name>")
 	sys.exit()
@@ -27,11 +22,11 @@ server_name = server_name.decode()
 print('Connected with',server_name)
 
 while True:
-    message = input('Client:')
+    message = input('Client: ')
     c_socket.sendall(message.encode())
     if message == 'close': #exit from loop if 'close' is encountered
         break
     message = (c_socket.recv(1024)).decode()
     print(server_name,":",message)
-    #c_socket.sendall(message.encode())
+    
 c_socket.close()

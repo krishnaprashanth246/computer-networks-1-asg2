@@ -4,6 +4,7 @@ import sys
 s_PORT   = 9999
 
 # Creating client socket
+#only ipv4
 c_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 if(len(sys.argv) != 2):
@@ -21,10 +22,14 @@ while True:
     if query=='n':
         break
     command=input("Enter the cmd : ")
-    c_socket.send(command.encode())
+    if not command:
+    	continue
+    c_socket.send(command.encode())    
+    print("sent ", command)
+
     output=c_socket.recv(2048).decode()
-    print("output of cmd:"+output)
+    print("output of cmd:\n"+output)
 
 
 
-client.close()
+c_socket.close()
