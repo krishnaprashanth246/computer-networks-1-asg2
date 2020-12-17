@@ -22,7 +22,7 @@ server_name = server_name.decode()
 print('Connected with',server_name)
 
 while True:
-    message = input('Client: ')
+    message = input('Client : ')
     c_socket.sendall(message.encode())
     if message == 'close': #exit from loop if 'close' is encountered
         break

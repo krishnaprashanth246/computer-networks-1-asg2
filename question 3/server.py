@@ -13,7 +13,7 @@ name = input('Enter name of Server:')
 s_soc.listen(MAX_CLIENTS)
 
 conn, add = s_soc.accept() # accepting connection
-print(conn) 
+# print(conn) 
 print("Received connection from ", add[0]) # add - IP address of client
 print('Connection Established. Connected From: ',add[0])
 

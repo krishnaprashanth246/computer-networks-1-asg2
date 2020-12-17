@@ -1,3 +1,4 @@
+from datetime import datetime
 from _thread import *
 import threading
 import socket
@@ -10,7 +11,6 @@ def writing():
     while True:
         msg=c_socket.recv(1024)
         print(msg.decode())
-
 
 if __name__ == '__main__':
     if(len(sys.argv) != 2):
@@ -34,15 +34,16 @@ if __name__ == '__main__':
     c_socket.sendall(name.encode())
     server_name = c_socket.recv(1024)
     server_name = server_name.decode()
-    print('Connected with ',server_name)
-    print("Format: \"get_list\" for list of clients\n\
-        \"send all\" sends msg for all\n\
-        \"send c1 c2 : msg\" sends msg for c1 and c2\n\
-        \"quit\" for exiting")
+    time_now = (datetime.now()).replace(microsecond = 0)
+    print('Connected with ',server_name, "at date_time = ", time_now)
+    print("\nFormat: >>\"get_list\" for list of clients\n\
+        >>\"send all\" sends msg for all\n\
+        >>\"send c1 c2 : msg\" sends msg for c1 and c2\n\
+        >>\"quit\" for exiting\n")
     start_new_thread(writing,())
     while True:
 #        print(server_name,":",message)
-        message = input(">>")
+        message = input()
 
         if message =='quit':
             break
@@ -50,7 +51,3 @@ if __name__ == '__main__':
         # data = c_socket.recv(1024)
         
     c_socket.close()
-
-    
-
-
