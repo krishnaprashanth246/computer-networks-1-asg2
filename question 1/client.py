@@ -11,7 +11,7 @@ if(len(sys.argv) != 2):
 	sys.exit()
 name = sys.argv[1]
 allhostinfo = socket.getaddrinfo(name, s_PORT)
-# print(allhostinfo)
+print(allhostinfo)
 hostinfo, _, _ = allhostinfo
 s_host = hostinfo[4]
 c_socket.connect(s_host)

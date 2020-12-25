@@ -2,7 +2,7 @@ import socket
 import subprocess
 
 s_PORT   = 9999
-#only ipv4
+
 server = socket.socket(socket.AF_INET6,type=socket.SOCK_STREAM)  # creating socket
 
 server.bind((b'',s_PORT))
